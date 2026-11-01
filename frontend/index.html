@@ -1,9 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Shapes Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <h1>Shapes Calculator</h1>
@@ -14,55 +15,11 @@
             <option value="rectangle">Rectangle</option>
         </select>
 
-        <div id="dimensions">
-            <input type="number" id="radius" placeholder="Radius" step="any">
-        </div>
+        <div id="dimensions"></div>
 
         <button type="submit">Calculate</button>
     </form>
 
     <h2 id="result"></h2>
-
-    <script>
-        const shape = document.getElementById("shape");
-        const dimensions = document.getElementById("dimensions");
-        const result = document.getElementById("result");
-
-        shape.addEventListener("change", () => {
-            dimensions.innerHTML = shape.value === "circle"
-                ? '<input type="number" id="radius" placeholder="Radius" step="any">'
-                : '<input type="number" id="width" placeholder="Width" step="any"><input type="number" id="height" placeholder="Height" step="any">';
-        });
-
-        document.getElementById("form").addEventListener("submit", async (event) => {
-            event.preventDefault();
-
-            const dimensions = shape.value === "circle"
-                ? [Number(document.getElementById("radius").value)]
-                : [
-                    Number(document.getElementById("width").value),
-                    Number(document.getElementById("height").value)
-                ];
-
-            try {
-                const response = await fetch("/api/shapes/calculate-area", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        shape: shape.value,
-                        dimensions
-                    })
-                });
-
-                const data = await response.json();
-
-                result.textContent = data.success
-                    ? `Area: ${data.data.area}`
-                    : `Error: ${data.error.message}`;
-            } catch {
-                result.textContent = "Server connection failed.";
-            }
-        });
-    </script>
 </body>
-
+</html>
