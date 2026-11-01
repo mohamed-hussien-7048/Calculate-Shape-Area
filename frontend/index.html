@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shapes Calculator</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <header class="header">
+            <a href="/" class="brand">
+                <div class="brand-icon">S</div>
+                <span>Shapes<span class="brand-highlight">.</span></span>
+            </a>
+
+            <div class="connection-status">
+                <span class="status-dot"></span>
+                <span>API Connected</span>
+            </div>
+        </header>
+
+        <main>
+
+            <section class="hero">
+                <span class="eyebrow">GEOMETRY TOOLKIT</span>
+
+                <h1>Calculate Shape <span>Area.</span></h1>
+
+                <p>
+                    Select a geometric shape, enter its dimensions,
+                    and calculate its area instantly.
+                </p>
+            </section>
+
+            <section class="calculator-card">
+
+                <div class="section-heading">
+                    <div>
+                        <h2>Shape Calculator</h2>
+                        <p>Select the shape you want to calculate.</p>
+                    </div>
+
+                    <span class="step-label">STEP 01</span>
+                </div>
+
+                <div class="shape-options">
+
+                    <button
+                        type="button"
+                        class="shape-option active"
+                        data-shape="circle"
+                    >
+                        <span class="shape-icon circle-icon"></span>
+
+                        <span class="shape-info">
+                            <strong>Circle</strong>
+                            <small>Calculate using radius</small>
+                        </span>
+
+                        <span class="selection-indicator"></span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="shape-option"
+                        data-shape="rectangle"
+                    >
+                        <span class="shape-icon rectangle-icon"></span>
+
+                        <span class="shape-info">
+                            <strong>Rectangle</strong>
+                            <small>Calculate using width and height</small>
+                        </span>
+
+                        <span class="selection-indicator"></span>
+                    </button>
+
+                </div>
+
+                <div class="divider"></div>
+
+                <form id="calculator-form">
+
+                    <div class="section-heading">
+                        <div>
+                            <h2>Dimensions</h2>
+                            <p>Enter the required measurements.</p>
+                        </div>
+
+                        <span class="step-label">STEP 02</span>
+                    </div>
+
+                    <div id="dimensions-container">
+
+                        <div class="form-group">
+                            <label for="radius">Radius</label>
+
+                            <div class="input-wrapper">
+                                <input
+                                    type="number"
+                                    id="radius"
+                                    name="radius"
+                                    placeholder="Enter radius"
+                                    min="0.000001"
+                                    step="any"
+                                    required
+                                >
+
+                                <span class="input-unit">units</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" id="calculate-button">
+                        <span id="button-text">Calculate Area</span>
+                        <span class="button-arrow">→</span>
+                    </button>
+
+                </form>
+
+                <div id="error-message" class="error-message hidden"></div>
+
+                <section id="result-section" class="result-section hidden">
+
+                    <div class="result-header">
+                        <div>
+                            <span class="result-label">CALCULATION RESULT</span>
+                            <h3>Your Shape Area</h3>
+                        </div>
+
+                        <div class="result-check">✓</div>
+                    </div>
+
+                    <div class="result-value">
+                        <span id="area-value">0</span>
+                    </div>
+
+                    <div class="result-footer">
+                        <span id="result-shape">Circle</span>
+                        <span>Square Units</span>
+                    </div>
+
+                </section>
+
+            </section>
+
+            <footer class="footer">
+                <p>Built with C++ OOP & Node.js</p>
+                <span>Shapes Calculator © 2026</span>
+            </footer>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>
