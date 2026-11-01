@@ -1,4 +1,4 @@
-```javascript
+
 const form = document.getElementById("form");
 const shape = document.getElementById("shape");
 const dimensions = document.getElementById("dimensions");
@@ -87,4 +87,4 @@ shape.addEventListener("change", renderInputs);
 form.addEventListener("submit", calculateArea);
 
 renderInputs();
-```
+
