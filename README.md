@@ -1,59 +1,74 @@
-# Node.js + C++ OOP Learning Project
+# 🔷 مشروع تعلم OOP باستخدام Node.js + C++
 
-A Shapes Management System built with **C++ and Node.js** to demonstrate the four fundamental Object-Oriented Programming principles through a practical application.
+سيستم متكامل لإدارة وتحسيب المساحات بالأشكال الهندسية (Shapes Management System)، مبني بالـ **C++ والـ Node.js** عشان يوضح التطبيق العملي لمبادئ البرمجة الكائنية الأربعة (Object-Oriented Programming).
 
-## Project Overview
+## 💡 فكرة المشروع (Project Overview)
 
-The application calculates the areas of different geometric shapes.
+التطبيق بيحسب مساحات الأشكال الهندسية المختلفة، ومتقسم كالتالي:
 
-- **C++:** Implements the OOP classes, shape logic, validation, and area calculations.
-- **Node.js:** Provides an HTTP REST API and communicates with the C++ executable.
-- **Communication:** JSON over standard input and standard output using Node.js `child_process`.
+* **C++:** مسئول عن بناء الـ Classes، والـ Validation، ومعادلات حساب المساحات بالكامل طبقاً لـ OOP.
 
-## Technologies
+* **Node.js:** بيوفر الـ REST API لخدمة الموقع وبيكتلم مع ملف الـ C++ المترجم (Executable).
 
-- C++17
-- Node.js
-- TypeScript
-- Express.js
-- nlohmann/json
-- GCC / MinGW
-- PowerShell
+* **طريقة التواصل:** بيتم نقل البيانات بصيغة JSON عبر الـ Standard Input والـ Standard Output باستخدام `child_process` في Node.js.
 
-## Object-Oriented Programming
+## 🛠️ التقنيات المستخدمة (Technologies)
 
-### 1. Encapsulation
+* **C++17**
 
-Implemented in `Circle` and `Rectangle`.
+* **Node.js**
 
-- Shape dimensions are declared as private properties.
-- Constructors initialize and validate object data.
-- Public getter methods provide controlled access to properties.
+* **TypeScript**
 
-### 2. Abstraction
+* **Express.js**
 
-Implemented through the abstract `Shape` class.
+* **nlohmann/json** (مكتبة التعامل مع JSON في C++)
 
-- `Shape` defines the `calculateArea()` pure virtual function.
-- Derived classes must implement their own area calculation.
-- Direct instantiation of `Shape` is not allowed.
+* **GCC / MinGW**
 
-### 3. Inheritance
+* **PowerShell**
 
-Implemented through:
+## 🧩 تطبيق مبادئ الـ OOP (Object-Oriented Programming)
 
-- `Circle : public Shape`
-- `Rectangle : public Shape`
+### 1️⃣ الكبسولة (Encapsulation)
 
-Both classes inherit the common interface from `Shape`.
+مطبقة في الـ Classes الخاصة بـ `Circle` و `Rectangle`:
 
-### 4. Polymorphism
+* أبعاد الأشكال الهندسية متعرّفة كـ `private properties`.
 
-Implemented using virtual functions and base-class pointers.
+* الـ Constructors بتهتم بالتجهيز والتأكد من صحة البيانات (Validation).
 
-Different shape objects are accessed through `Shape` pointers, and each object executes its own implementation of `calculateArea()` at runtime.
+* استخدام `getter methods` عامة (Public) للوصول للبيانات بشكل آمن ومحكوم.
 
-## Project Structure
+### 2️⃣ التجريد (Abstraction)
+
+مطبق من خلال الـ Abstract Class الأساسي `Shape`:
+
+* الـ `Shape` بيعرّف Pure Virtual Function اسمها `calculateArea()`.
+
+* كل Class مشتق لازم يكتب التطبيق الخاص بيه للحساب.
+
+* غير مسموح بإنشاء كائن (Object) مباشر من الـ `Shape`.
+
+### 3️⃣ الوراثة (Inheritance)
+
+مطبقة كالتالي:
+
+* `Circle : public Shape`
+
+* `Rectangle : public Shape`
+
+الـ Classes المشتقة بتورث الواجهة الأساسية (Interface) من الـ `Shape`.
+
+### 4️⃣ تعدد الأشكال (Polymorphism)
+
+مطبق باستخدام الـ Virtual Functions ومؤشرات الـ Base Class (`Shape` pointers):
+
+* بيتم التعامل مع أشكال مختلفة من خلال مؤشرات الـ `Shape`.
+
+* كل كائن بينفذ الدالة الخاصة بيه `calculateArea()` وقت التشغيل (Runtime).
+
+## 📂 هيكل المشروع (Project Structure)
 
 ```text
 NASR_2/
@@ -91,7 +106,7 @@ NASR_2/
 └── README.md
 ```
 
-## Application Architecture
+## 📐 معماريّة التطبيق (Application Architecture)
 
 ```text
 HTTP Client
@@ -105,7 +120,7 @@ Shape Controller
     v
 Shape Service (Node.js)
     |
-    | JSON through stdin
+    |  إرسال بيانات JSON عبر stdin
     v
 C++ Executable
     |
@@ -123,100 +138,102 @@ ShapeFactory
     +------> Rectangle
     |
     v
-JSON Response through stdout
+ إرجاع الاستجابة JSON عبر stdout
     |
     v
 Node.js HTTP Response
 ```
 
-## Requirements
+## ⚙️ المتطلبات التشغيلية (Requirements)
 
-- Node.js and npm
-- GCC compiler supporting C++17
-- nlohmann/json C++ library
-- PowerShell
+* **Node.js و npm**
 
-## C++ Build
+* مترجم **GCC** يدعم C++17
 
-Run the following command from the project root:
+* مكتبة **nlohmann/json** للـ C++
+
+* **PowerShell**
+
+## 🔨 بناء وتحزيم الـ C++ (C++ Build)
+
+شغّل الأمر ده من الفولدر الرئيسي للمشروع:
 
 ```powershell
 g++ -std=c++17 -Wall -Wextra -Wpedantic -I cpp/include cpp/src/main.cpp cpp/src/handlers/JsonHandler.cpp cpp/src/services/ShapeService.cpp cpp/src/factories/ShapeFactory.cpp cpp/src/shapes/Circle.cpp cpp/src/shapes/Rectangle.cpp -o cpp/build/shapes.exe
 ```
 
-## C++ Tests
+## 🧪 اختبارات الـ C++ (C++ Tests)
 
-Run:
+شغّل السكريبت ده:
 
 ```powershell
 .\cpp\tests\run_tests.ps1
 ```
 
-The test suite covers:
+مجموعة الاختبارات بتغطي:
 
-- Inheritance
-- Polymorphism
-- Area calculations
-- Invalid dimensions
-- Non-finite values
-- Numeric overflow
-- Encapsulation negative compilation test
-- Abstraction negative compilation test
+* الوراثة (Inheritance)
 
-## Node.js Setup
+* تعدد الأشكال (Polymorphism)
 
-Navigate to the backend directory:
+* عمليات حساب المساحة (Area Calculations)
+
+* الأبعاد غير الصحيحة (Invalid dimensions)
+
+* القيم غير المنتهية (Non-finite values)
+
+* تجاوز الحدود الرقمية (Numeric overflow)
+
+* اختبارات الـ Compilation السلبية للـ Encapsulation والـ Abstraction
+
+## 🚀 تشغيل وتجهيز الـ Node.js (Node.js Setup)
+
+ادخل على فولدر الـ Backend:
 
 ```powershell
 cd backend
 ```
 
-Install dependencies:
+ثبّت المكتبات:
 
 ```powershell
 npm install
 ```
 
-Run TypeScript type checking:
+تأكد من سلامة الـ Types:
 
 ```powershell
 npm run typecheck
 ```
 
-Build the backend:
+ابني الـ Backend:
 
 ```powershell
 npm run build
 ```
 
-Start the development server:
+شغّل سيرفر التطوير:
 
 ```powershell
 npm run dev
 ```
 
-The API runs at:
+الـ API هيشتغل على الرابط:
 
-```text
-http://localhost:3000
-```
+`http://localhost:3000`
 
-## REST API
+## 🔌 مسارات الـ REST API
 
-### Health Check
+### 1️⃣ فحص الخدمة (Health Check)
 
-```http
-GET /api/health
-```
+`GET /api/health`
 
-### Calculate Shape Area
+### 2️⃣ حساب مساحة الشكل (Calculate Shape Area)
 
-```http
-POST /api/shapes/calculate-area
-Content-Type: application/json
-```
+`POST /api/shapes/calculate-area`
+`Content-Type: application/json`
 
-Circle request:
+**طلب حساب الدائرة (Circle request):**
 
 ```json
 {
@@ -225,7 +242,7 @@ Circle request:
 }
 ```
 
-Rectangle request:
+**طلب حساب المستطيل (Rectangle request):**
 
 ```json
 {
@@ -234,7 +251,7 @@ Rectangle request:
 }
 ```
 
-Successful response:
+**شكل الاستجابة عند النجاح (Success response):**
 
 ```json
 {
@@ -246,7 +263,7 @@ Successful response:
 }
 ```
 
-Error response:
+**شكل الاستجابة عند الخطأ (Error response):**
 
 ```json
 {
@@ -257,8 +274,8 @@ Error response:
 }
 ```
 
-## Project Objective
+## 🎯 هدف المشروع (Project Objective)
 
-The main objective is to understand and apply the four fundamental OOP principles in C++, while integrating the C++ application with a Node.js REST API.
+الهدف الرئيسي من المشروع هو فهم وتطبيق مبادئ الـ OOP الأربعة عمقاً في C++، مع ربطه بـ REST API شغال بـ Node.js لتوضيح كيفية الربط والتعامل التفاعلي بين لغتين برمجيتين مختلفين مع الفصل التام بين مسئوليات كل لغة منهم.
 
-This project demonstrates practical interaction between two programming languages while keeping their responsibilities separate.
+❤️ **تم التطوير بواسطة Techno Science**
